@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Unit Instrumentation Tests</string>
+
+    <!-- Fragment Front Title -->
+    <string name="fragment_front_title">Welcome!</string>
     <string name="label_hello_world">Hello World!</string>
+
+    <!-- About Front Title -->
+    <string name="fragment_about_title">About</string>
+    <string name="about_text">Thank you!</string>
 </resources>
