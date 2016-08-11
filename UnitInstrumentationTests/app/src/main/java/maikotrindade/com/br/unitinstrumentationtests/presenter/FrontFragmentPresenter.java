@@ -1,10 +1,5 @@
 package maikotrindade.com.br.unitinstrumentationtests.presenter;
 
-import android.support.v4.app.Fragment;
-import android.view.View;
-
-import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
-import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.ListFragment;
 import maikotrindade.com.br.unitinstrumentationtests.ui.view.FrontFragmentView;
 
 /**
@@ -18,13 +13,6 @@ public class FrontFragmentPresenter implements BasePresenter<FrontFragmentView> 
     @Override
     public void attachView(FrontFragmentView view) {
         mView = view;
-
-        mView.setButtonListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)((Fragment)mView).getActivity()).changeFragment(new ListFragment());
-            }
-        });
     }
 
     @Override

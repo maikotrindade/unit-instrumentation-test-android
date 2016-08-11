@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
 import maikotrindade.com.br.unitinstrumentationtests.presenter.ListFragmentPresenter;
@@ -17,11 +18,19 @@ public class ListFragment extends Fragment implements ListFragmentView{
 
     private ListFragmentPresenter mPresenter;
     private View mRootView;
+    private Button mButton;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         mRootView = inflater.inflate(R.layout.fragment_list, container, false);
+        mButton = (Button) mRootView.findViewById(R.id.search_button);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         mPresenter = new ListFragmentPresenter();
         mPresenter.attachView(this);

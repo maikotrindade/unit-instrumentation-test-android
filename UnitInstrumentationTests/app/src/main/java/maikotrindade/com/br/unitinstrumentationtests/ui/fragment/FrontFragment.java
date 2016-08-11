@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
 import maikotrindade.com.br.unitinstrumentationtests.presenter.FrontFragmentPresenter;
+import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
 import maikotrindade.com.br.unitinstrumentationtests.ui.view.FrontFragmentView;
 
 /**
@@ -25,6 +26,12 @@ public class FrontFragment extends Fragment implements FrontFragmentView {
 
         mRootView = inflater.inflate(R.layout.fragment_front, container, false);
         mButton = (Button) mRootView.findViewById(R.id.about_button);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).changeFragment(new ListFragment());
+            }
+        });
 
         mPresenter = new FrontFragmentPresenter();
         mPresenter.attachView(this);
@@ -39,8 +46,4 @@ public class FrontFragment extends Fragment implements FrontFragmentView {
         getActivity().setTitle(R.string.fragment_front_title);
     }
 
-    @Override
-    public void setButtonListener(View.OnClickListener onClickListener) {
-        mButton.setOnClickListener(onClickListener);
-    }
 }
