@@ -8,12 +8,13 @@ import android.widget.LinearLayout;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.FrontFragment;
+import maikotrindade.com.br.unitinstrumentationtests.ui.view.MainView;
 
 /**
  * @author maiko.trindade
  * @since 07/08/2016
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainView {
 
     private LinearLayout mBodyFragment;
 
@@ -30,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         changeFragment(new FrontFragment());
     }
 
-    public boolean changeFragment(Fragment nextFragment){
+    @Override
+    public void changeFragment(Fragment nextFragment){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.body_fragment, nextFragment);
         fragmentTransaction.commit();
-        return false;
     }
 }
