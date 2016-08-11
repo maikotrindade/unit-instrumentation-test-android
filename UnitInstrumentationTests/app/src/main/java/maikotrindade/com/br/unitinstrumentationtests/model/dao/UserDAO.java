@@ -27,14 +27,14 @@ public class UserDAO {
     public long insert(final User user){
 
         ContentValues values = new ContentValues();
-        values.put(DatabaseContract.UserTable.COLUMN_ID, user.getId());
-        values.put(DatabaseContract.UserTable.COLUMN_LOGIN, user.getLogin());
+//        values.put(DatabaseContract.UserTable.COLUMN_ID, user.getId());
+//        values.put(DatabaseContract.UserTable.COLUMN_LOGIN, user.getLogin());
         values.put(DatabaseContract.UserTable.COLUMN_NAME, user.getName());
-        values.put(DatabaseContract.UserTable.COLUMN_EMAIL, user.getEmail());
-        values.put(DatabaseContract.UserTable.COLUMN_COMPANY, user.getCompany());
-        values.put(DatabaseContract.UserTable.COLUMN_LOCATION, user.getLocation());
-        values.put(DatabaseContract.UserTable.COLUMN_TIME_CREATED, user.getTimeCreated());
-        values.put(DatabaseContract.UserTable.COLUMN_TIME_UPDATED, user.getTimeUpdated());
+//        values.put(DatabaseContract.UserTable.COLUMN_EMAIL, user.getEmail());
+//        values.put(DatabaseContract.UserTable.COLUMN_COMPANY, user.getCompany());
+//        values.put(DatabaseContract.UserTable.COLUMN_LOCATION, user.getLocation());
+//        values.put(DatabaseContract.UserTable.COLUMN_TIME_CREATED, user.getTimeCreated());
+//        values.put(DatabaseContract.UserTable.COLUMN_TIME_UPDATED, user.getTimeUpdated());
         long localUserId = database.insertOrThrow(DatabaseContract.Tables.USER_TB, null, values);
         return localUserId;
     }
@@ -59,14 +59,14 @@ public class UserDAO {
 
     private User cursorToUser(Cursor cursor){
         User user = new User();
-        user.setId(cursor.getInt(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_ID)));
-        user.setLogin(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_LOGIN)));
+//        user.setId(cursor.getInt(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_ID)));
+//        user.setLogin(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_LOGIN)));
         user.setName(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_NAME)));
-        user.setEmail(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_EMAIL)));
-        user.setCompany(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_COMPANY)));
-        user.setLocation(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_LOCATION)));
-        user.setTimeCreated(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_TIME_CREATED)));
-        user.setTimeUpdated(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_TIME_UPDATED)));
+//        user.setEmail(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_EMAIL)));
+//        user.setCompany(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_COMPANY)));
+//        user.setLocation(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_LOCATION)));
+//        user.setTimeCreated(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_TIME_CREATED)));
+//        user.setTimeUpdated(cursor.getString(cursor.getColumnIndex(DatabaseContract.UserTable.COLUMN_TIME_UPDATED)));
         return user;
     }
 
