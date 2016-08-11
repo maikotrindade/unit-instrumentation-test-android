@@ -72,4 +72,8 @@ public class ListFragment extends Fragment implements ListFragmentView{
         mAdapter.notifyDataSetChanged();
     }
 
+    public void cleanSearchBox(){
+        mSearchTextView.setText("");
+    }
+
 }
