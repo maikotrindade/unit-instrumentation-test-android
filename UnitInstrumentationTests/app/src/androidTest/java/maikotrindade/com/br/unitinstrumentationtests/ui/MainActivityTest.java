@@ -12,6 +12,8 @@ import org.junit.runner.RunWith;
 import maikotrindade.com.br.unitinstrumentationtests.R;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.AboutFragment;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.FrontFragment;
+import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.ListFragment;
+import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.ResultFragment;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -28,9 +30,10 @@ import static org.junit.Assert.*;
 @SmallTest
 public class MainActivityTest {
 
-    private String mAppTitle;
-    private String mFragmentTitle;
-    private String mAboutText;
+    private String mFragmentFrontTitle;
+    private String mFragmentAboutTitle;
+    private String mFragmentListTitle;
+    private String mFragmentResultTitle;
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
@@ -38,27 +41,23 @@ public class MainActivityTest {
 
     @Before
     public void setUp() throws Exception {
-        mAppTitle  = mActivityRule.getActivity()
+        mFragmentFrontTitle  = mActivityRule.getActivity()
                 .getResources().getString(R.string.fragment_front_title);
-        mFragmentTitle  = mActivityRule.getActivity()
-                .getResources().getString(R.string.label_hello_world);
-        mAboutText  = mActivityRule.getActivity()
-                .getResources().getString(R.string.about_text);
+        mFragmentAboutTitle  = mActivityRule.getActivity()
+                .getResources().getString(R.string.fragment_about_title);
+        mFragmentListTitle  = mActivityRule.getActivity()
+                .getResources().getString(R.string.fragment_list_title);
+        mFragmentResultTitle  = mActivityRule.getActivity()
+                .getResources().getString(R.string.fragment_result_title);
     }
 
     @Test
     public void testOnCreate() throws Exception {
-        assertEquals(mActivityRule.getActivity().getTitle(), mAppTitle);
+        assertEquals(mFragmentFrontTitle, mActivityRule.getActivity().getTitle());
 
-        // The fragment FrontFragment is instantiated
+        // FrontFragment is instantiated
         onView(withId(R.id.body_fragment))
                 .check(matches(withChild(withId(R.id.fragment_front_container))));
-
-
-        // The content of the fragment FrontFragment is being displayed
-        onView(withId(R.id.title))
-                .check(matches(isDisplayed()))
-                .check(matches(withText(mFragmentTitle)));
 
     }
 
@@ -69,9 +68,8 @@ public class MainActivityTest {
         onView(withId(R.id.body_fragment))
                 .check(matches(withChild(withId(R.id.fragment_front_container))));
 
-        onView(withId(R.id.title))
-                .check(matches(isDisplayed()))
-                .check(matches(withText(mFragmentTitle)));
+        assertEquals(mFragmentFrontTitle, mActivityRule.getActivity().getTitle());
+
 
         mActivityRule.getActivity().changeFragment(new AboutFragment());
 
@@ -79,19 +77,25 @@ public class MainActivityTest {
         onView(withId(R.id.body_fragment))
                 .check(matches(withChild(withId(R.id.fragment_about_container))));
 
-        onView(withId(R.id.about_text))
-                .check(matches(isDisplayed()))
-                .check(matches(withText(mAboutText)));
+        assertEquals(mFragmentAboutTitle, mActivityRule.getActivity().getTitle());
 
-        mActivityRule.getActivity().changeFragment(new FrontFragment());
 
-        // Assert that the current fragment is FrontFragment
+        mActivityRule.getActivity().changeFragment(new ListFragment());
+
+        // Assert that the current fragment is ListFragment
         onView(withId(R.id.body_fragment))
-                .check(matches(withChild(withId(R.id.fragment_front_container))));
+                .check(matches(withChild(withId(R.id.fragment_list_container))));
 
-        onView(withId(R.id.title))
-                .check(matches(isDisplayed()))
-                .check(matches(withText(mFragmentTitle)));
+        assertEquals(mFragmentListTitle, mActivityRule.getActivity().getTitle());
+
+
+        mActivityRule.getActivity().changeFragment(new ResultFragment());
+
+        // Assert that the current fragment is ResultFragment
+        onView(withId(R.id.body_fragment))
+                .check(matches(withChild(withId(R.id.fragment_result_container))));
+
+        assertEquals(mFragmentResultTitle, mActivityRule.getActivity().getTitle());
 
     }
 

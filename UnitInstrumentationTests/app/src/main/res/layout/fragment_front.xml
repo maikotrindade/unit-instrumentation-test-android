@@ -11,12 +11,37 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/about_compliment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:paddingTop="30dp"
-            android:text="@string/label_hello_world" />
+            android:layout_gravity="left"
+            android:padding="30dp"
+            android:text="@string/fragment_front_compliment" />
+
+        <TextView
+            android:id="@+id/about_paragraph1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:padding="30dp"
+            android:text="@string/fragment_front_paragraph1" />
+
+        <TextView
+            android:id="@+id/about_paragraph2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:padding="30dp"
+            android:text="@string/fragment_front_paragraph2" />
+
+        <Button
+            android:id="@+id/about_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:text="@string/fragment_front_button"/>
+
 
     </LinearLayout>
 </LinearLayout>
