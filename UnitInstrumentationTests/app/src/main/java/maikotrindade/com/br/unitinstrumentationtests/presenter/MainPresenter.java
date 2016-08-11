@@ -37,5 +37,10 @@ public class MainPresenter implements BasePresenter<MainView> {
         return userDao.findAll();
     }
 
+    public User findUserById(int id){
+        userDao = UserDAO.getInstance();
+        return userDao.findUserById(id);
+    }
+
 
 }

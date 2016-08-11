@@ -33,8 +33,7 @@ public class UserDAO extends BaseDAO  {
         values.put(DatabaseContract.UserTable.COLUMN_LOCATION, user.getLocation());
         values.put(DatabaseContract.UserTable.COLUMN_TIME_CREATED, user.getTimeCreated());
         values.put(DatabaseContract.UserTable.COLUMN_TIME_UPDATED, user.getTimeUpdated());
-        long localUserId = database.insertOrThrow(DatabaseContract.Tables.USER_TB, null, values);
-        return localUserId;
+        return database.insertOrThrow(DatabaseContract.Tables.USER_TB, null, values);
     }
 
 
@@ -52,6 +51,18 @@ public class UserDAO extends BaseDAO  {
         }
         cursor.close();
         return users;
+    }
+
+
+    public User findUserById(int id){
+        User user = new User();
+        String query = "SELECT * FROM "+ DatabaseContract.Tables.USER_TB
+                + " WHERE "+ DatabaseContract.UserTable.COLUMN_ID + " = ?";
+        Cursor cursor = database.rawQuery(query, new String[]{String.valueOf(id)});
+        if(cursor != null && cursor.moveToFirst()){
+            user = cursorToUser(cursor);
+        }
+        return user;
     }
 
 
