@@ -5,22 +5,20 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
-import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
 
 /**
  * Created by joao on 8/9/16.
  */
-public class AboutFragment extends Fragment {
+public class ResultFragment extends Fragment {
 
     private View mRootView;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mRootView = inflater.inflate(R.layout.fragment_about, container, false);
+        mRootView = inflater.inflate(R.layout.fragment_result, container, false);
 
         return mRootView;
     }
@@ -29,7 +27,7 @@ public class AboutFragment extends Fragment {
     public void onResume() {
         super.onResume();
 
-        getActivity().setTitle(R.string.fragment_about_title);
+        getActivity().setTitle(R.string.fragment_result_title);
     }
 
 }
