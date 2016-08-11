@@ -7,13 +7,13 @@ import maikotrindade.com.br.unitinstrumentationtests.model.DatabaseHelper;
 /**
  * Created by ricardo.sgobbe on 10/08/2016.
  */
-public class AeaApplication extends Application {
+public class UnitTestApplication extends Application {
 
-    private static AeaApplication sInstance;
+    private static UnitTestApplication sInstance;
     private static DatabaseHelper sDatabaseHelper;
 
 
-    public static synchronized AeaApplication getInstance(){
+    public static synchronized UnitTestApplication getInstance(){
         return sInstance;
     }
 
