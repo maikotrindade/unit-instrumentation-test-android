@@ -79,7 +79,7 @@ public class MainActivityTest {
         onView(withId(R.id.body_fragment))
                 .check(matches(withChild(withId(R.id.fragment_about_container))));
 
-        onView(withId(R.id.about_text))
+        onView(withId(R.id.about_compliment))
                 .check(matches(isDisplayed()))
                 .check(matches(withText(mAboutText)));
 

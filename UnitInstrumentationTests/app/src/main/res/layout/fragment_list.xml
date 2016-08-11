@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:padding="30dp"
-            android:text="@string/fragment_about_paragraph" />
+            android:text="@string/fragment_list_paragraph" />
 
     </LinearLayout>
 </LinearLayout>
