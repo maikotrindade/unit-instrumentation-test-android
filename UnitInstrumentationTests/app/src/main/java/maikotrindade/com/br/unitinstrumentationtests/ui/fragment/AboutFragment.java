@@ -5,15 +5,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
-import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
+import maikotrindade.com.br.unitinstrumentationtests.presenter.AboutFragmentPresenter;
+import maikotrindade.com.br.unitinstrumentationtests.ui.view.AboutFragmentView;
 
 /**
  * Created by joao on 8/9/16.
  */
-public class AboutFragment extends Fragment {
+public class AboutFragment extends Fragment implements AboutFragmentView {
+
+    private AboutFragmentPresenter mPresenter;
 
     private View mRootView;
 
@@ -21,6 +23,9 @@ public class AboutFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         mRootView = inflater.inflate(R.layout.fragment_about, container, false);
+
+        mPresenter = new AboutFragmentPresenter();
+        mPresenter.attachView(this);
 
         return mRootView;
     }

@@ -8,6 +8,6 @@ import android.support.v4.app.Fragment;
  */
 public interface MainView {
 
-    void changeFragment(Fragment nextFragment, int titleResourceId);
+    void changeFragment(Fragment nextFragment);
 
 }
