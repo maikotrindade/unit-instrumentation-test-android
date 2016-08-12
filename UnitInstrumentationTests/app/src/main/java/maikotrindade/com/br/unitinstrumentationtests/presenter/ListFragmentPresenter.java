@@ -1,5 +1,6 @@
 package maikotrindade.com.br.unitinstrumentationtests.presenter;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import maikotrindade.com.br.unitinstrumentationtests.api.GitHubUserService;
 import maikotrindade.com.br.unitinstrumentationtests.model.dao.UserDAO;
 import maikotrindade.com.br.unitinstrumentationtests.model.entity.User;
+import maikotrindade.com.br.unitinstrumentationtests.model.version.DatabaseHelper;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.ListFragment;
 import maikotrindade.com.br.unitinstrumentationtests.ui.view.ListFragmentView;
 import retrofit2.Call;
@@ -51,7 +53,9 @@ public class ListFragmentPresenter implements BasePresenter<ListFragmentView> {
                     public void onResponse(Call<User> call, Response<User> response) {
                         User downloadedUser = response.body();
                         if( downloadedUser != null ) {
-                            UserDAO userDAO = new UserDAO(((Fragment) mView).getContext());
+
+                            SQLiteDatabase database = (new DatabaseHelper(((Fragment) mView).getContext())).getWritableDatabase();
+                            UserDAO userDAO = new UserDAO(database);
                             userDAO.insert(response.body());
 
                             reloadListFromDatabase();
@@ -70,7 +74,8 @@ public class ListFragmentPresenter implements BasePresenter<ListFragmentView> {
     }
 
     public void reloadListFromDatabase(){
-        UserDAO userDAO = new UserDAO(((Fragment)mView).getContext());
+        SQLiteDatabase database = (new DatabaseHelper(((Fragment) mView).getContext())).getWritableDatabase();
+        UserDAO userDAO = new UserDAO(database);
         List<User> users = userDAO.findAll();
 
 
