@@ -19,8 +19,8 @@ public class UserDAO {
 
     private SQLiteDatabase database;
 
-    public UserDAO(Context context){
-        database = (new DatabaseHelper(context)).getWritableDatabase();
+    public UserDAO(SQLiteDatabase database){
+        this.database = database;
     }
 
 
