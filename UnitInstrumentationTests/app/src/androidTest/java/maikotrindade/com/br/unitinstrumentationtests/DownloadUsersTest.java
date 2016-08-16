@@ -5,7 +5,11 @@ import android.support.test.filters.SmallTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.test.UiThreadTest;
+import android.view.View;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -14,7 +18,9 @@ import org.junit.runner.RunWith;
 import maikotrindade.com.br.unitinstrumentationtests.model.version.DatabaseHelper;
 import maikotrindade.com.br.unitinstrumentationtests.presenter.ListFragmentPresenter;
 import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
+import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.AboutFragment;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.ListFragment;
+import maikotrindade.com.br.unitinstrumentationtests.ui.view.ListFragmentView;
 import maikotrindade.com.br.unitinstrumentationtests.utils.ApiUtils;
 import maikotrindade.com.br.unitinstrumentationtests.utils.RecyclerViewItemCountAssertion;
 
@@ -43,13 +49,15 @@ public class DownloadUsersTest {
         databaseHelper.cleanDatabase(database);
     }
 
+
     @Test
     public void testValidUser() throws Exception {
-        onView(withId(R.id.start_button))
-                .perform(click());
+        ListFragment listFragment = new ListFragment();
+        ListFragmentPresenter presenter =
+                new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysValidService());
+        listFragment.setmPresenter(presenter);
+        mActivityRule.getActivity().changeFragment(listFragment);
 
-        Fragment f = mActivityRule.getActivity().getSupportFragmentManager().findFragmentById(R.id.body_fragment);
-        ((ListFragment)f).setmPresenter(new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysValidService()));
 
         onView(withId(R.id.list))
                 .check(new RecyclerViewItemCountAssertion(0));
@@ -58,8 +66,8 @@ public class DownloadUsersTest {
                 .check(matches(withText("")))
                 .perform(typeText("username"));
 
-//        onView(withId(R.id.search_button))
-  //              .perform(click());
+        onView(withId(R.id.search_button))
+                .perform(click());
 
         onView(withId(R.id.list))
             .check(new RecyclerViewItemCountAssertion(1));
@@ -67,11 +75,11 @@ public class DownloadUsersTest {
 
     @Test
     public void testManyUsers() throws Exception {
-        onView(withId(R.id.start_button))
-                .perform(click());
-
-        Fragment f = mActivityRule.getActivity().getSupportFragmentManager().findFragmentById(R.id.body_fragment);
-        ((ListFragment)f).setmPresenter(new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysValidService()));
+        ListFragment listFragment = new ListFragment();
+        ListFragmentPresenter presenter =
+                new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysValidService());
+        listFragment.setmPresenter(presenter);
+        mActivityRule.getActivity().changeFragment(listFragment);
 
         onView(withId(R.id.list))
                 .check(new RecyclerViewItemCountAssertion(0));
@@ -80,7 +88,7 @@ public class DownloadUsersTest {
 
             onView(withId(R.id.search_text))
                     .check(matches(withText("")))
-                    .perform(typeText("username "+i));
+                    .perform(typeText("username"+i));
 
             onView(withId(R.id.search_button))
                     .perform(click());
@@ -93,11 +101,12 @@ public class DownloadUsersTest {
 
     @Test
     public void testInvalidUser() throws Exception {
-        onView(withId(R.id.start_button))
-                .perform(click());
+        ListFragment listFragment = new ListFragment();
+        ListFragmentPresenter presenter =
+                new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysInvalidService());
+        listFragment.setmPresenter(presenter);
+        mActivityRule.getActivity().changeFragment(listFragment);
 
-        Fragment f = mActivityRule.getActivity().getSupportFragmentManager().findFragmentById(R.id.body_fragment);
-        ((ListFragment)f).setmPresenter(new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysInvalidService()));
 
         onView(withId(R.id.list))
                 .check(new RecyclerViewItemCountAssertion(0));

@@ -57,7 +57,9 @@ public class ListFragment extends Fragment implements ListFragmentView {
         mAdapter = new UsersListAdapter(null, getActivity());
         mRecyclerView.setAdapter(mAdapter);
 
-        mPresenter = new ListFragmentPresenter(null);
+        if( mPresenter == null ) {
+            mPresenter = new ListFragmentPresenter(null);
+        }
         mPresenter.attachView(this);
 
         return mRootView;

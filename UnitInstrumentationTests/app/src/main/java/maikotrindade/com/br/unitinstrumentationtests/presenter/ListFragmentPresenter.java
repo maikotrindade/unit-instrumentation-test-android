@@ -24,7 +24,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ListFragmentPresenter implements BasePresenter<ListFragmentView> {
 
     private ListFragmentView mView;
-    private static final String BASE_URL = "https://api.github.com/";
     private GitHubUserService gitHubUserService;
 
 

@@ -11,10 +11,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApiUtils {
 
+    private static final String BASE_URL = "https://api.github.com/";
+    private static final String MOCK_URL = "https://api.github.com/";
+
     public static GitHubUserService getGitHubUserService(){
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
+                .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -28,12 +31,12 @@ public class ApiUtils {
         //logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient client = new OkHttpClient.Builder()
-            //.addInterceptor(logging);
+            //.addInterceptor(logging)
             .addInterceptor(new AlwaysReturnsAUserOkHttpInterceptor())
             .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost/")
+                .baseUrl(MOCK_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
@@ -44,8 +47,8 @@ public class ApiUtils {
     }
 
     public static GitHubUserService getGitHubUserAlwaysInvalidService(){
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        //HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        //logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient client = new OkHttpClient.Builder()
                 //.addInterceptor(logging)
@@ -53,7 +56,7 @@ public class ApiUtils {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://localhost/")
+                .baseUrl(MOCK_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

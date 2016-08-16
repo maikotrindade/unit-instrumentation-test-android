@@ -45,9 +45,8 @@ public class UserDAOTest {
         user.setName("User Name");
 
         UserDAO userDAO = new UserDAO(database);
-        long userId = userDAO.insert( user );
-
-        assertTrue( userId > 0 );
+        long rowID = userDAO.insert( user );
+        assert( rowID != 0 );
 
     }
 
@@ -61,8 +60,8 @@ public class UserDAOTest {
         User user = new User();
         user.setName("User Name");
 
-        long userId = userDAO.insert( user );
-        assertTrue( userId > 0 );
+        long rowID = userDAO.insert( user );
+        assert( rowID != 0 );
 
         users = userDAO.findAll();
         assertEquals(1, users.size());
