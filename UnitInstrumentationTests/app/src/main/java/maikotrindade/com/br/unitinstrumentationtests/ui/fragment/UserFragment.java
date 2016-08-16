@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
 import maikotrindade.com.br.unitinstrumentationtests.model.entity.User;
@@ -20,6 +20,8 @@ import maikotrindade.com.br.unitinstrumentationtests.ui.view.UserFragmentView;
  * @since 16/08/2016
  */
 public class UserFragment extends Fragment implements UserFragmentView {
+
+    private final static String TAG = UserFragment.class.getSimpleName();
 
     private UserFragmentPresenter mPresenter;
     private static UserFragment sInstance;
@@ -54,7 +56,10 @@ public class UserFragment extends Fragment implements UserFragmentView {
         getActivity().setTitle(user.getName());
 
         final ImageView avatarImgView = (ImageView) mRootView.findViewById(R.id.avatar_image_view);
-        Glide.with(getContext()).load(user.getAvatarUrl()).into(avatarImgView);
+        Picasso.with(getContext())
+                .load(user.getAvatarUrl())
+                .placeholder(R.drawable.githubuser)
+                .into(avatarImgView);
 
         final TextView usernameTxtView = (TextView) mRootView.findViewById(R.id.user_name);
         usernameTxtView.setText(user.getName());
