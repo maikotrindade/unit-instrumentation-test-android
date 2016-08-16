@@ -53,15 +53,18 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        final User user = mDataset.get(position);
+
         TextView userNameTextView = (TextView) holder.mView.findViewById(R.id.user_name);
-        userNameTextView.setText(mDataset.get(position).getName());
+        userNameTextView.setText(user.getName());
         TextView userLoginTextView = (TextView) holder.mView.findViewById(R.id.user_login);
-        userLoginTextView.setText("@" + mDataset.get(position).getLogin());
+        userLoginTextView.setText("@" + user.getLogin());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                ((MainActivity) mActivity).changeFragment(new UserFragment());
+                final UserFragment userFragment = UserFragment.newInstance(user);
+                ((MainActivity) mActivity).changeFragment(userFragment);
             }
         });
     }
