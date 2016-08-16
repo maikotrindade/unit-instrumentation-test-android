@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ListFragmentPresenter implements BasePresenter<ListFragmentView> {
 
     private ListFragmentView mView;
-
+    private static final String BASE_URL = "https://api.github.com/";
 
     @Override
     public void attachView(ListFragmentView view) {
@@ -37,26 +37,26 @@ public class ListFragmentPresenter implements BasePresenter<ListFragmentView> {
         mView = null;
     }
 
-    public void searchForUser(String searchText){
-        if( searchText != null && searchText.length() > 0 ) {
+    public void searchForUser(String searchText) {
+        if (searchText != null && searchText.length() > 0) {
 
             Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.github.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
 
             GitHubUserService service = retrofit.create(GitHubUserService.class);
-            if( service != null ) {
+            if (service != null) {
                 Call<User> userCall = service.getSingleUser(searchText);
                 userCall.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         User downloadedUser = response.body();
-                        if( downloadedUser != null ) {
-
-                            SQLiteDatabase database = (new DatabaseHelper(((Fragment) mView).getContext())).getWritableDatabase();
+                        if (downloadedUser != null) {
+                            SQLiteDatabase database = (new DatabaseHelper(((Fragment) mView)
+                                    .getContext())).getWritableDatabase();
                             UserDAO userDAO = new UserDAO(database);
-                            userDAO.insert(response.body());
+                            userDAO.insert(downloadedUser);
 
                             reloadListFromDatabase();
                             ((ListFragment) mView).cleanSearchBox();
@@ -73,12 +73,13 @@ public class ListFragmentPresenter implements BasePresenter<ListFragmentView> {
         }
     }
 
-    public void reloadListFromDatabase(){
-        SQLiteDatabase database = (new DatabaseHelper(((Fragment) mView).getContext())).getWritableDatabase();
+    public void reloadListFromDatabase() {
+        SQLiteDatabase database = (new DatabaseHelper(((Fragment) mView).getContext()))
+                .getWritableDatabase();
         UserDAO userDAO = new UserDAO(database);
         List<User> users = userDAO.findAll();
 
 
-        ((ListFragment)mView).updateUsersList(users);
+        ((ListFragment) mView).updateUsersList(users);
     }
 }

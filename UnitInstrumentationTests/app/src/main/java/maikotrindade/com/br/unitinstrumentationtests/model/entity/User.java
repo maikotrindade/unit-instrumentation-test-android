@@ -1,5 +1,7 @@
 package maikotrindade.com.br.unitinstrumentationtests.model.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by ricardo.sgobbe on 10/08/2016.
  */
@@ -13,6 +15,8 @@ public class User {
     private String email;
     private String timeCreated;
     private String timeUpdated;
+    @SerializedName("avatar_url")
+    private String avatarUrl;
 
     public int getId() {
         return id;
@@ -76,5 +80,13 @@ public class User {
 
     public void setTimeUpdated(String timeUpdated) {
         this.timeUpdated = timeUpdated;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(final String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 }

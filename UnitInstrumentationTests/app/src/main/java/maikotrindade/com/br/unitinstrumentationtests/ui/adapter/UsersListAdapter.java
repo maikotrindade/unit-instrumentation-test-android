@@ -21,7 +21,8 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public View mView;
-        public ViewHolder(View v){
+
+        public ViewHolder(View v) {
             super(v);
             mView = v;
         }
@@ -31,8 +32,8 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.View
         updateDataset(myDataset);
     }
 
-    public void updateDataset(List<User> myDataset){
-        if( myDataset == null ) {
+    public void updateDataset(List<User> myDataset) {
+        if (myDataset == null) {
             myDataset = new ArrayList<>();
         }
         mDataset = myDataset;
@@ -40,20 +41,17 @@ public class UsersListAdapter extends RecyclerView.Adapter<UsersListAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-
-        View v = LayoutInflater.from(parent.getContext())
+        View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item_user, parent, false);
-
-        ViewHolder vh = new ViewHolder(v);
-
-        return vh;
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        TextView textView = (TextView) holder.mView.findViewById(R.id.user_name);
-        textView.setText("("+position+"): "+mDataset.get(position).getName());
+        TextView userNameTextView = (TextView) holder.mView.findViewById(R.id.user_name);
+        userNameTextView.setText(mDataset.get(position).getName());
+        TextView userLoginTextView = (TextView) holder.mView.findViewById(R.id.user_login);
+        userLoginTextView.setText("@" + mDataset.get(position).getLogin());
     }
 
     @Override

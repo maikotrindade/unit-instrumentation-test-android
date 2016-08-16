@@ -14,8 +14,8 @@
 
     <!-- Fragment List -->
     <string name="fragment_list_title">Users List</string>
-    <string name="fragment_list_search_label">Download an user</string>
-    <string name="fragment_list_search_button">Go</string>
+    <string name="fragment_list_search_label">Type a GitHub username</string>
+    <string name="fragment_list_search_button">Search</string>
     <string name="fragment_list_paragraph">Here will be a list very soon</string>
 
     <!-- Fragment Result -->
