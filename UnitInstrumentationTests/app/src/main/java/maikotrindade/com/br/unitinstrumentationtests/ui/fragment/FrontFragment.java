@@ -25,7 +25,7 @@ public class FrontFragment extends Fragment implements FrontFragmentView {
                              Bundle savedInstanceState) {
 
         mRootView = inflater.inflate(R.layout.fragment_front, container, false);
-        mButton = (Button) mRootView.findViewById(R.id.about_button);
+        mButton = (Button) mRootView.findViewById(R.id.start_button);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
