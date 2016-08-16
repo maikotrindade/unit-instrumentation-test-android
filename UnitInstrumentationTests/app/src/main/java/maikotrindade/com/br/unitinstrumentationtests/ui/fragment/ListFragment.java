@@ -54,7 +54,7 @@ public class ListFragment extends Fragment implements ListFragmentView {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(
                 new DividerItemDecoration(getActivity(), R.drawable.divider));
-        mAdapter = new UsersListAdapter(null);
+        mAdapter = new UsersListAdapter(null, getActivity());
         mRecyclerView.setAdapter(mAdapter);
 
         mPresenter = new ListFragmentPresenter();
