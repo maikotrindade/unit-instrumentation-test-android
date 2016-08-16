@@ -54,7 +54,7 @@ public class ListFragment extends Fragment implements ListFragmentView{
         mAdapter = new UsersListAdapter(null);
         mRecyclerView.setAdapter(mAdapter);
 
-        mPresenter = new ListFragmentPresenter();
+        mPresenter = new ListFragmentPresenter(null);
         mPresenter.attachView(this);
 
         return mRootView;
@@ -65,6 +65,16 @@ public class ListFragment extends Fragment implements ListFragmentView{
         super.onResume();
 
         getActivity().setTitle(R.string.fragment_list_title);
+    }
+
+    public ListFragmentPresenter getmPresenter() {
+        return mPresenter;
+    }
+
+    public void setmPresenter(ListFragmentPresenter mPresenter) {
+        if( mPresenter != null ) {
+            this.mPresenter = mPresenter;
+        }
     }
 
     public void updateUsersList(List<User> users){
