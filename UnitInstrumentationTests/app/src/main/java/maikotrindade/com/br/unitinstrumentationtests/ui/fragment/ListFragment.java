@@ -16,12 +16,13 @@ import maikotrindade.com.br.unitinstrumentationtests.R;
 import maikotrindade.com.br.unitinstrumentationtests.model.entity.User;
 import maikotrindade.com.br.unitinstrumentationtests.presenter.ListFragmentPresenter;
 import maikotrindade.com.br.unitinstrumentationtests.ui.adapter.UsersListAdapter;
+import maikotrindade.com.br.unitinstrumentationtests.ui.component.DividerItemDecoration;
 import maikotrindade.com.br.unitinstrumentationtests.ui.view.ListFragmentView;
 
 /**
  * Created by joao on 8/9/16.
  */
-public class ListFragment extends Fragment implements ListFragmentView{
+public class ListFragment extends Fragment implements ListFragmentView {
 
     private ListFragmentPresenter mPresenter;
     private View mRootView;
@@ -51,7 +52,9 @@ public class ListFragment extends Fragment implements ListFragmentView{
         mRecyclerView = (RecyclerView) mRootView.findViewById(R.id.list);
         mLayoutManager = new LinearLayoutManager(this.getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new UsersListAdapter(null);
+        mRecyclerView.addItemDecoration(
+                new DividerItemDecoration(getActivity(), R.drawable.divider));
+        mAdapter = new UsersListAdapter(null, getActivity());
         mRecyclerView.setAdapter(mAdapter);
 
         mPresenter = new ListFragmentPresenter(null);
@@ -77,12 +80,12 @@ public class ListFragment extends Fragment implements ListFragmentView{
         }
     }
 
-    public void updateUsersList(List<User> users){
+    public void updateUsersList(List<User> users) {
         mAdapter.updateDataset(users);
         mAdapter.notifyDataSetChanged();
     }
 
-    public void cleanSearchBox(){
+    public void cleanSearchBox() {
         mSearchTextView.setText("");
     }
 
