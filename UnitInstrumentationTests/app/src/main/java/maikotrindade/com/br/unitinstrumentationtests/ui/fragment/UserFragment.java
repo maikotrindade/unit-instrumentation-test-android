@@ -24,10 +24,8 @@ public class UserFragment extends Fragment implements UserFragmentView {
                              Bundle savedInstanceState) {
 
         mRootView = inflater.inflate(R.layout.fragment_user, container, false);
-
         mPresenter = new UserFragmentPresenter();
         mPresenter.attachView(this);
-
         return mRootView;
     }
 
