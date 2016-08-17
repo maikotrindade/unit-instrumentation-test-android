@@ -4,12 +4,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.test.filters.SmallTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.test.UiThreadTest;
-import android.view.View;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -17,10 +12,8 @@ import org.junit.runner.RunWith;
 
 import maikotrindade.com.br.unitinstrumentationtests.model.version.DatabaseHelper;
 import maikotrindade.com.br.unitinstrumentationtests.presenter.ListFragmentPresenter;
-import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
-import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.AboutFragment;
+import maikotrindade.com.br.unitinstrumentationtests.ui.activity.MainActivity;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.ListFragment;
-import maikotrindade.com.br.unitinstrumentationtests.ui.view.ListFragmentView;
 import maikotrindade.com.br.unitinstrumentationtests.utils.ApiUtils;
 import maikotrindade.com.br.unitinstrumentationtests.utils.RecyclerViewItemCountAssertion;
 
