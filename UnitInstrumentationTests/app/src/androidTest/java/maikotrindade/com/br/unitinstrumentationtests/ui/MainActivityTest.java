@@ -70,7 +70,7 @@ public class MainActivityTest {
         assertEquals(mFragmentFrontTitle, mActivityRule.getActivity().getTitle());
 
 
-        mActivityRule.getActivity().changeFragment(new AboutFragment(), 0);
+        mActivityRule.getActivity().changeFragment(new AboutFragment());
 
         // Assert that the current fragment is AboutFragment
         onView(withId(R.id.body_fragment))
@@ -79,7 +79,7 @@ public class MainActivityTest {
         assertEquals(mFragmentAboutTitle, mActivityRule.getActivity().getTitle());
 
 
-        mActivityRule.getActivity().changeFragment(new ListFragment(), 0);
+        mActivityRule.getActivity().changeFragment(new ListFragment());
 
         // Assert that the current fragment is ListFragment
         onView(withId(R.id.body_fragment))
@@ -88,7 +88,7 @@ public class MainActivityTest {
         assertEquals(mFragmentListTitle, mActivityRule.getActivity().getTitle());
 
 
-        mActivityRule.getActivity().changeFragment(new ResultFragment(), 0);
+        mActivityRule.getActivity().changeFragment(new ResultFragment());
 
         // Assert that the current fragment is ResultFragment
         onView(withId(R.id.body_fragment))
