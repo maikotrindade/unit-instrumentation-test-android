@@ -15,8 +15,6 @@ import maikotrindade.com.br.unitinstrumentationtests.utils.ApiUtils;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by joao on 8/11/16.
@@ -73,13 +71,13 @@ public class ListFragmentPresenter implements BasePresenter<ListFragmentView> {
                             userDAO.insert(downloadedUser);
 
                             reloadListFromDatabase();
-                            ((ListFragment) mView).cleanSearchBox();
+                            mView.clearSearchBox();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-
+                        mView.downloadErrorUser();
                     }
                 });
             }
@@ -94,6 +92,7 @@ public class ListFragmentPresenter implements BasePresenter<ListFragmentView> {
         List<User> users = userDAO.findAll();
 
 
-        ((ListFragment) mView).updateUsersList(users);
+         mView.showUserList(users);
+
     }
 }

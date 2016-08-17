@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
 import maikotrindade.com.br.unitinstrumentationtests.presenter.FrontFragmentPresenter;
-import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
+import maikotrindade.com.br.unitinstrumentationtests.ui.activity.MainActivity;
 import maikotrindade.com.br.unitinstrumentationtests.ui.view.FrontFragmentView;
 
 /**
