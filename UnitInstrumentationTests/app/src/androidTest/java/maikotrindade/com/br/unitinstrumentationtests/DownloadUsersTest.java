@@ -1,6 +1,7 @@
 package maikotrindade.com.br.unitinstrumentationtests;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Handler;
 import android.support.test.filters.SmallTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -23,6 +24,7 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.*;
 
 /**
  * Created by joao on 8/12/16.
@@ -113,6 +115,31 @@ public class DownloadUsersTest {
 
         onView(withId(R.id.list))
                 .check(new RecyclerViewItemCountAssertion(0));
+    }
+
+
+    @Test
+    public void testDuplicateUser() throws Exception{
+        final ListFragment listFragment = new ListFragment();
+        ListFragmentPresenter presenter =
+                new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysValidService());
+        listFragment.setmPresenter(presenter);
+        mActivityRule.getActivity().changeFragment(listFragment);
+
+        for(int i = 1; i < 3; i++){
+
+            onView(withId(R.id.search_text)).perform(typeText("username1"));
+
+
+            onView(withId(R.id.search_button)).perform(click());
+
+            onView(withId(R.id.list))
+                    .check(new RecyclerViewItemCountAssertion(i));
+
+
+        }
+
+
     }
 
 }

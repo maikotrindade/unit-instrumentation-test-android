@@ -1,5 +1,9 @@
 package maikotrindade.com.br.unitinstrumentationtests.presenter;
 
+import java.util.List;
+
+import maikotrindade.com.br.unitinstrumentationtests.model.persistence.dao.UserDAO;
+import maikotrindade.com.br.unitinstrumentationtests.model.persistence.entity.User;
 import maikotrindade.com.br.unitinstrumentationtests.ui.view.MainView;
 
 /**
@@ -9,6 +13,7 @@ import maikotrindade.com.br.unitinstrumentationtests.ui.view.MainView;
 public class MainPresenter implements BasePresenter<MainView> {
 
     private MainView mMainView;
+    private UserDAO userDao;
 
     @Override
     public void attachView(MainView view) {
@@ -19,4 +24,23 @@ public class MainPresenter implements BasePresenter<MainView> {
     public void detachView() {
         mMainView = null;
     }
+
+
+
+    public void insertUser(User user){
+        userDao = UserDAO.getInstance();
+        userDao.insert(user);
+    }
+
+    public List<User> findAll(){
+        userDao = UserDAO.getInstance();
+        return userDao.findAll();
+    }
+
+    public User findUserById(int id){
+        userDao = UserDAO.getInstance();
+        return userDao.findUserById(id);
+    }
+
+
 }
