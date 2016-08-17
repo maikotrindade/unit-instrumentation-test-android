@@ -3,6 +3,7 @@
               android:id="@+id/fragment_front_container"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/white"
               android:orientation="vertical">
 
     <LinearLayout
@@ -12,35 +13,37 @@
 
         <TextView
             android:id="@+id/about_compliment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:padding="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical"
+            android:textSize="24sp"
             android:text="@string/fragment_front_compliment" />
 
         <TextView
             android:id="@+id/about_paragraph1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:padding="30dp"
+            android:layout_width="match_parent"
+            android:layout_weight="4"
+            android:layout_height="0dp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:paddingTop="40dp"
             android:text="@string/fragment_front_paragraph1" />
 
-        <TextView
-            android:id="@+id/about_paragraph2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:padding="30dp"
-            android:text="@string/fragment_front_paragraph2" />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:layout_weight="1">
         <Button
-            android:id="@+id/about_button"
+            android:id="@+id/button_about"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="5dp"
             android:text="@string/fragment_front_button"/>
+
+        </LinearLayout>
 
 
     </LinearLayout>

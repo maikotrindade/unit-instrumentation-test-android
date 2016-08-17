@@ -3,7 +3,7 @@
 
     <!-- Fragment Front -->
     <string name="fragment_front_title">Welcome!</string>
-    <string name="fragment_front_compliment">Hi,</string>
+    <string name="fragment_front_compliment">Hello,</string>
     <string name="fragment_front_paragraph1">This application is an experiment on Android testing.</string>
     <string name="fragment_front_paragraph2">Click bellow to start</string>
     <string name="fragment_front_button">Start</string>
@@ -15,7 +15,7 @@
     <!-- Fragment List -->
     <string name="fragment_list_title">Users List</string>
     <string name="fragment_list_search_label">Download an user</string>
-    <string name="fragment_list_search_button">Go</string>
+    <string name="fragment_list_search_button">Go!</string>
     <string name="fragment_list_paragraph">Here will be a list very soon</string>
 
     <!-- Fragment Result -->

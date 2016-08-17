@@ -40,5 +40,9 @@ dependencies {
     androidTestCompile "com.google.dexmaker:dexmaker-mockito:1.2"
     androidTestCompile "com.android.support.test.espresso:espresso-intents:2.2.2"
 
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+
+
+
 
 }

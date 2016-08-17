@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
 import maikotrindade.com.br.unitinstrumentationtests.presenter.FrontFragmentPresenter;
-import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
+import maikotrindade.com.br.unitinstrumentationtests.ui.activity.MainActivity;
 import maikotrindade.com.br.unitinstrumentationtests.ui.view.FrontFragmentView;
 
 /**
@@ -25,7 +25,7 @@ public class FrontFragment extends Fragment implements FrontFragmentView {
                              Bundle savedInstanceState) {
 
         mRootView = inflater.inflate(R.layout.fragment_front, container, false);
-        mButton = (Button) mRootView.findViewById(R.id.about_button);
+        mButton = (Button) mRootView.findViewById(R.id.button_about);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
