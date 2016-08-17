@@ -14,7 +14,7 @@ import java.util.List;
 
 import maikotrindade.com.br.unitinstrumentationtests.model.entity.User;
 import maikotrindade.com.br.unitinstrumentationtests.model.version.DatabaseHelper;
-import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
+import maikotrindade.com.br.unitinstrumentationtests.ui.activity.MainActivity;
 
 import static org.junit.Assert.*;
 
