@@ -16,17 +16,10 @@ import maikotrindade.com.br.unitinstrumentationtests.ui.view.MainView;
  */
 public class MainActivity extends AppCompatActivity implements MainView {
 
-    private LinearLayout mBodyFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //https://imguilherme.com/2015/01/25/testes-unitarios-no-android/
-        //http://www.orogersilva.com/testes-automatizados-em-android/
-
-        mBodyFragment = (LinearLayout) findViewById(R.id.body_fragment);
 
         changeFragment(new FrontFragment());
     }

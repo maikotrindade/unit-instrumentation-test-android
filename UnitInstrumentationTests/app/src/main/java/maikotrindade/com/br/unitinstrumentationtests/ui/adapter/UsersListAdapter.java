@@ -12,7 +12,7 @@ import java.util.List;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
 import maikotrindade.com.br.unitinstrumentationtests.model.entity.User;
-import maikotrindade.com.br.unitinstrumentationtests.ui.MainActivity;
+import maikotrindade.com.br.unitinstrumentationtests.ui.activity.MainActivity;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.UserFragment;
 
 /**

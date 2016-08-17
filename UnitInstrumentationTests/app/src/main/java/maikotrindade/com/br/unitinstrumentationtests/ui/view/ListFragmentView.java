@@ -12,4 +12,8 @@ public interface ListFragmentView {
 
     void showUserList(List<User> users);
 
+    void clearSearchBox();
+
+    void downloadErrorUser();
+
 }

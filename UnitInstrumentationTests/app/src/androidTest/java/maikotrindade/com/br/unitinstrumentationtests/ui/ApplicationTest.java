@@ -42,7 +42,7 @@ public class ApplicationTest {
         assertEquals(mApplication.getApplicationInfo().targetSdkVersion, 23);
         Object[] databases = mApplication.databaseList();
         assertNotNull(databases);
-        assertEquals(databases.length, 0);
+        assertEquals(2, databases.length);
 
     }
 
