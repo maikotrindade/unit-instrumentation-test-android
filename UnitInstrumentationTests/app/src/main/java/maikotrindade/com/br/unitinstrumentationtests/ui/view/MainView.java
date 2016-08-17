@@ -8,8 +8,6 @@ import android.support.v4.app.Fragment;
  */
 public interface MainView {
 
-    void changeFragment(Fragment nextFragment, int titleResourceId);
-    void insertUserOnDb(/*User user*/);
-    void findAllUsersOnDb();
+    void changeFragment(Fragment nextFragment);
 
 }
