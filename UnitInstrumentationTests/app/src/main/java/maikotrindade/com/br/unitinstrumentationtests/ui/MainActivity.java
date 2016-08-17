@@ -16,13 +16,10 @@ import maikotrindade.com.br.unitinstrumentationtests.ui.view.MainView;
  */
 public class MainActivity extends AppCompatActivity implements MainView {
 
-    private LinearLayout mBodyFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mBodyFragment = (LinearLayout) findViewById(R.id.body_fragment);
 
         changeFragment(new FrontFragment());
     }
