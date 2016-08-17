@@ -10,14 +10,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import maikotrindade.com.br.unitinstrumentationtests.R;
+import maikotrindade.com.br.unitinstrumentationtests.ui.activity.MainActivity;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.AboutFragment;
-import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.FrontFragment;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.ListFragment;
 import maikotrindade.com.br.unitinstrumentationtests.ui.fragment.ResultFragment;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withChild;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;

@@ -1,4 +1,4 @@
-package maikotrindade.com.br.unitinstrumentationtests.ui;
+package maikotrindade.com.br.unitinstrumentationtests.ui.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
