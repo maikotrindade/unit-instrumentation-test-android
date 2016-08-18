@@ -43,6 +43,11 @@ public class UserDAOTest {
     public void testInsert() throws Exception {
         User user = new User();
         user.setName("User Name");
+        user.setLogin("test");
+        user.setEmail("test@test.com");
+        user.setCompany("test company");
+        user.setTimeCreated("00:00:00");
+        user.setTimeUpdated("06:56:00");
 
         UserDAO userDAO = new UserDAO(database);
         long rowID = userDAO.insert( user );
@@ -59,6 +64,11 @@ public class UserDAOTest {
 
         User user = new User();
         user.setName("User Name");
+        user.setLogin("test");
+        user.setEmail("test@test.com");
+        user.setCompany("test company");
+        user.setTimeCreated("00:00:00");
+        user.setTimeUpdated("06:56:00");
 
         long rowID = userDAO.insert( user );
         assert( rowID != 0 );

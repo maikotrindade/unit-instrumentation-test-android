@@ -1,23 +1,24 @@
 package maikotrindade.com.br.unitinstrumentationtests.model.persistence.dao;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.support.test.rule.ActivityTestRule;
+
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static android.support.test.espresso.action.ViewActions.longClick;
-import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import maikotrindade.com.br.unitinstrumentationtests.model.dao.UserDAO;
+import maikotrindade.com.br.unitinstrumentationtests.model.entity.User;
+import maikotrindade.com.br.unitinstrumentationtests.model.version.DatabaseHelper;
+import maikotrindade.com.br.unitinstrumentationtests.ui.activity.MainActivity;
 
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.action.ViewActions.click;
+
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import maikotrindade.com.br.unitinstrumentationtests.model.persistence.entity.User;
 
 import static org.junit.Assert.*;
 
@@ -28,11 +29,21 @@ public class UserDAOTest {
 
     private UserDAO mockUserDAO;
     private UserDAO userDAO;
+    private SQLiteDatabase database;
+    private DatabaseHelper databaseHelper;
+
+    @Rule
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(
+            MainActivity.class);
 
     @Before
     public void mockingClass(){
         mockUserDAO = Mockito.mock(UserDAO.class);
-        userDAO = UserDAO.getInstance();
+        databaseHelper = new DatabaseHelper(mActivityRule.getActivity());
+        database = databaseHelper.getWritableDatabase();
+        databaseHelper.cleanDatabase(database);
+        userDAO = new UserDAO(database);
+
     }
 
     @Test
