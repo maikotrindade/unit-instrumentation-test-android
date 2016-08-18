@@ -64,15 +64,19 @@ public class ListFragmentPresenter implements BasePresenter<ListFragmentView> {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         User downloadedUser = response.body();
-                        if (downloadedUser != null) {
-                            SQLiteDatabase database = (new DatabaseHelper(((Fragment) mView)
-                                    .getContext())).getWritableDatabase();
-                            UserDAO userDAO = new UserDAO(database);
-                            userDAO.insert(downloadedUser);
-
-                            reloadListFromDatabase();
-                            mView.clearSearchBox();
+                        if (downloadedUser == null) {
+                            mView.downloadErrorUser();
+                            return;
                         }
+
+                        SQLiteDatabase database = (new DatabaseHelper(((Fragment) mView)
+                                .getContext())).getWritableDatabase();
+                        UserDAO userDAO = new UserDAO(database);
+                        userDAO.insert(downloadedUser);
+
+                        reloadListFromDatabase();
+                        mView.clearSearchBox();
+
                     }
 
                     @Override

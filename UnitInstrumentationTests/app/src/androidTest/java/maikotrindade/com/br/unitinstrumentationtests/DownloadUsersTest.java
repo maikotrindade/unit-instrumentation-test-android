@@ -46,7 +46,7 @@ public class DownloadUsersTest {
 
 
     @Test
-    public void testValidUser() throws Exception {
+    public void oneValidUser() throws Exception {
         ListFragment listFragment = new ListFragment();
         ListFragmentPresenter presenter =
                 new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysValidService());
@@ -69,7 +69,7 @@ public class DownloadUsersTest {
     }
 
     @Test
-    public void testManyUsers() throws Exception {
+    public void manyUsers() throws Exception {
         ListFragment listFragment = new ListFragment();
         ListFragmentPresenter presenter =
                 new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysValidService());
@@ -79,7 +79,7 @@ public class DownloadUsersTest {
         onView(withId(R.id.list))
                 .check(new RecyclerViewItemCountAssertion(0));
 
-        for(int i=1; i<20; i++) {
+        for(int i=1; i<10; i++) {
 
             onView(withId(R.id.search_text))
                     .check(matches(withText("")))
@@ -94,8 +94,8 @@ public class DownloadUsersTest {
 
     }
 
-    @Test
-    public void testInvalidUser() throws Exception {
+    @Test(timeout = 5000)
+    public void oneInvalidUser() throws Exception {
         ListFragment listFragment = new ListFragment();
         ListFragmentPresenter presenter =
                 new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysInvalidService());
@@ -119,7 +119,7 @@ public class DownloadUsersTest {
 
 
     @Test
-    public void testDuplicateUser() throws Exception{
+    public void duplicateUser() throws Exception{
         final ListFragment listFragment = new ListFragment();
         ListFragmentPresenter presenter =
                 new ListFragmentPresenter(ApiUtils.getGitHubUserAlwaysValidService());
