@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import maikotrindade.com.br.unitinstrumentationtests.model.persistence.version.Database;
+import maikotrindade.com.br.unitinstrumentationtests.model.version.Database;
 
 /**
  * Created by ricardo.sgobbe on 10/08/2016.
