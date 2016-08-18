@@ -25,7 +25,6 @@ public class UserDAO {
     public long insert(final User user) {
 
         ContentValues values = new ContentValues();
-        values.put(DatabaseContract.UserTable.COLUMN_ID, user.getId());
         values.put(DatabaseContract.UserTable.COLUMN_NAME, user.getName());
         values.put(DatabaseContract.UserTable.COLUMN_LOGIN, user.getLogin());
         values.put(DatabaseContract.UserTable.COLUMN_LOCATION, user.getLocation());
