@@ -124,4 +124,9 @@ public class ListFragment extends Fragment implements ListFragmentView {
         mLightView.setVisibility(View.GONE);
         mProgressDownload.setVisibility(View.GONE);
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        //No call for super(). Bug on API Level > 11.
+    }
 }
